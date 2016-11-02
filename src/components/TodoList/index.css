@@ -1,0 +1,16 @@
+.todo-list{width:600px;margin:auto;padding: 10px;border: 1px solid #ccc;}
+.todo-list p{height: 36px;}
+.todo-list input{border-radius:5px; }
+.todo-list>ul{list-style: none;}
+.todo-list>ul li{width:580px;height: auto;margin-bottom:20px;border-bottom:1px solid #ccc;position: relative;min-height: 90px;}
+.todo-list>ul li .text{width:100%;height: 105px;line-height: 90px;}
+.todo-list>ul li p{width:100%;height: auto;}
+.todo-list .btn-right-contain{float: right;width:90px;position: absolute;right: 0;top: 0;}
+.todo-list button{border: none;outline: none;background: #065279;width:90px;height:30px;color: #fff;border-radius: 10px;margin-bottom:5px;margin-right:5px;  }
+.todo-list .add-item button:nth-child(2){float: right;}
+.todo-list .clear{clear: both;}
+.todo-list .edit{width:100%;height: auto;}
+.todo-list .edit p{width:60%;height: 30px;}
+.todo-list .edit input{width:100%;}
+.todo-list .edit button{float: none;}
+.todo-list .add-item input{width:60%;}
