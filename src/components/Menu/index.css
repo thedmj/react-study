@@ -1,0 +1,4 @@
+.filelist .menu{width:100px;position: absolute;left: 0;top: 0;display: none;}
+.filelist .menu ul{list-style: none;}
+.filelist .menu ul li{width:100%;height: 30px;margin: 0;padding: 0;background: #fff;font-size: 12px;line-height: 30px;}
+.filelist .menu ul li:hover{background: #57c5f7;color: #fff;}

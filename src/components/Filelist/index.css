@@ -1,0 +1,15 @@
+.filelist{background: #000;width:100%;height: 100%;}
+.filelist ul{list-style: none;}
+.filelist ul:after{content: "";display: block;clear: both;}
+.filelist ul li{float: left;width:90px;height: 110px;text-align: center;margin: 30px;cursor: pointer;position: relative;display: block;}
+.filelist ul li:hover .icon{color: #57c5f7;}
+.filelist ul li:hover .title{color: #57c5f7;}
+.filelist ul li .icon{display: block;font-size: 60px;height: 70px;color:yellow;}
+.filelist ul li .title{font-size: 30px;display:inline-block;text-overflow:ellipsis;overflow:hidden; color:#fff;width:100%}
+.filelist h1 {text-align: center;font-size: 60px;line-height: 110px;}
+.filelist h1 span{opacity:0;display: inline-block;font-weight: bold;color:yellow;}
+.filelist .bread{margin-left: 30px;}
+.filelist .bread .ant-breadcrumb a{font-size: 30px;color:yellow;}
+.filelist .bread .ant-breadcrumb a:hover{color: #57c5f7;}
+.filelist .rename{width:130%;height: 30px;position: absolute;bottom: -20px;left: 50%;margin-left:-65%; }
+.filelist .rename input{width:100%;height: 100%;z-index: 9;position: absolute;left: 0;top: 0;color:#000;text-align: center;}
