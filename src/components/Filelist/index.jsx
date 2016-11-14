@@ -236,7 +236,6 @@ var Filelist = React.createClass({
                 });
                 this.cancel();
             }
-            console.log(e.clientX,e.clientX-this.offsetX);
             this.setState({
                 showMenu:true,
                 position:{
@@ -291,7 +290,6 @@ var Filelist = React.createClass({
         var name="newfolder"+index;
         var path = this.state.path === "/"?"":this.state.path;
         var newfolder ={path:path+"/"+name,name:name,isFolder:true,ext:""}
-        console.log(newfolder.path);
         var This =this;
         
         mkdir(this.state.path,newfolder.name,function(res){
