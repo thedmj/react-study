@@ -14,7 +14,7 @@ var Menu =React.createClass({
                     <li style={{display:!!this.props.selectedItemName?"none":"block"}} onMouseDown={this.props.newfolder}>新建文件夹</li>
                     <li style={{display:!!this.props.selectedItemName?"block":"none"}} onMouseDown={this.copy}>复制</li>
                     <li style={{display:!!this.props.selectedItemName?"block":"none"}} onMouseDown={this.cut}>剪切</li>
-                    <li style={{display:!!this.props.filelist.state.copyItem||!!this.props.filelist.state.cutItem?"block":"none"}} onMouseDown={this.props.onpast}>粘贴</li>
+                    <li style={{display:!!this.props.filelist.state.copyItem||!!this.props.filelist.state.cutItem?"block":"none"}} onMouseDown={this.props.onpaste}>粘贴</li>
                     <li style={{display:!!this.props.selectedItemName?"block":"none"}} onMouseDown={this.props.delete}>删除</li>
                     <li style={{display:!!this.props.selectedItemName?"block":"none"}} onMouseDown={this.props.onrename}>重命名</li>
                 </ul>

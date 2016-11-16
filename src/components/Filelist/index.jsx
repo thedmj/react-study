@@ -1,6 +1,6 @@
-// edit 2016/11/13
+// edit 2016/11/16
 import React from 'react';
-import { get, rename, mkdir, remove, past } from "./ajax.js";
+import { get, rename, mkdir, remove, paste } from "./ajax.js";
 import { Icon, Breadcrumb, Input, Modal, message } from "antd";
 import { hashHistory, Link } from 'react-router';
 import Loading from "../Loading";
@@ -204,7 +204,7 @@ var Filelist = React.createClass({
                 </ul>
                 <Loading show={this.state.loading} />
 
-                <Menu position={this.state.position} showMenu={this.state.showMenu} onrename={this.renameShow} selectedItemName={this.state.selectedItem.name} filelist={this} newfolder={this.newfolder} delete={this.delete} getCopyItem={this.getCopyItem} getCutItem={this.getCutItem} onpast={this.onpast} />
+                <Menu position={this.state.position} showMenu={this.state.showMenu} onrename={this.renameShow} selectedItemName={this.state.selectedItem.name} filelist={this} newfolder={this.newfolder} delete={this.delete} getCopyItem={this.getCopyItem} getCutItem={this.getCutItem} onpaste={this.onpaste} />
             </div>
         )
     },
@@ -326,8 +326,14 @@ var Filelist = React.createClass({
     },
     confirm: function () {
         var This = this;
-        var path = This.state.selectedItem.item.state.path;
-        var name = This.state.selectedItem.name;
+        var selectedItem = This.state.selectedItem;
+        var path = selectedItem.item.state.path;
+        var name = selectedItem.name;
+        var copyItem = This.state.copyItem;
+        var cutItem = This.state.cutItem;
+        var item;
+        if(!!copyItem) item = copyItem;
+        if(!!cutItem) item = cutItem;
 
         Modal.confirm({
             title: "删除文件",
@@ -344,13 +350,27 @@ var Filelist = React.createClass({
                             newdir.push(dir[i])
                         }
                     }
-                    This.setState({
-                        dir: newdir,
-                        selectedItem: {
-                            name: "",
-                            item: null
-                        }
-                    });
+                    if(selectedItem.item !== item){
+                        console.log(selectedItem,item);
+                        This.setState({
+                            dir: newdir,
+                            selectedItem: {
+                                name: "",
+                                item: null,
+                            }
+                        });
+                    }else{
+                        This.setState({
+                            dir: newdir,
+                            selectedItem: {
+                                name: "",
+                                item: null,
+                            },
+                            copyItem:null,
+                            cutItem:null
+                        });
+                    }
+                    
                 }, function (err) {
                     if (err) console.log(err);
                 });
@@ -374,7 +394,7 @@ var Filelist = React.createClass({
         });
 
     },
-    onpast: function () {
+    onpaste: function () {
         var oldpath, name;
         var newpath = this.state.path;
         var type = "";
@@ -415,7 +435,7 @@ var Filelist = React.createClass({
         if (oldpath === (newpath + "/" + oldname) && type === "move/") {
             message.error("该文件没有移动！");
         } else {
-            past(oldpath, newpath, name, type, function (res) {
+            paste(oldpath, newpath, name, type, function (res) {
                 console.log(oldpath, newpath + "/" + name);
                 dir.push(res);
                 This.setState({

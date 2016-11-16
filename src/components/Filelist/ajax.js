@@ -40,7 +40,7 @@ export function remove(path,success,error){
         }
     });
 }
-export function past    (oldpath,newpath,name,type,success,error){
+export function paste(oldpath,newpath,name,type,success,error){
     request.get(url+type).query({old_path:oldpath,new_path:newpath+"/"+name}).end(function(err,res){
         if(err){
             return error(err);
