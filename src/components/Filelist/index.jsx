@@ -12,11 +12,19 @@ import TweenMax from "../../../node_modules/gsap/src/minified/TweenMax.min.js";
 
 var Filelistitem = React.createClass({
     getInitialState: function () {
+        var hasCut=false;
+         if(!!this.props.filelist.state.cutItem){
+            if(this.props.filelist.state.cutItem.state.title === this.props.title){
+                hasCut = true;
+            }else{
+                hasCut = false;
+            }
+        }
         return {
             showRename: false,
             title: this.props.title,
             path: this.props.path,
-            hasCut: false
+            hasCut: hasCut
         }
 
     },
@@ -29,7 +37,7 @@ var Filelistitem = React.createClass({
 
         var type = typeList[this.props.ext];
         if (!typeList[this.props.ext]) {
-            type = "file-unknown"
+            type = "file-unknown";
         };
         return (
             <li onMouseDown={this.rightClick} style={style}>
@@ -100,12 +108,21 @@ var Filelistitem = React.createClass({
         }
     },
     componentWillReceiveProps: function (nextProps) { //更换选中项后取消激活rename 这里componentWillReceiveProps会遍历items
+        var o ={
+            showRename:false,
+            hasCut:false    
+        };
         if (this.props.selectedItem.name === "") {
-            this.setState({
-                showRename: false,
-                hasCut: false
-            });
+            o.showRename=false;
         }
+        if(!!this.props.filelist.state.cutItem){
+            if(this.props.filelist.state.cutItem.state.title === this.state.title){
+                o.hasCut = true;
+            }else{
+                o.hasCut = false;
+            }
+        }
+        this.setState(o);
     },
 
     rightClick: function (e) { //右键文件激活选中项

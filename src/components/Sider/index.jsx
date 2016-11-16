@@ -34,10 +34,10 @@ const Sider = React.createClass({
                 >
                 <SubMenu key="sub1" title={<span><Icon type="mail" /><span>REACT STUDY</span></span>}>
                   <MenuItemGroup title="作业">
+                    <Menu.Item key="clound"><Link activeStyle={{color: 'red'}} to="clound/">Clound</Link></Menu.Item>
                     <Menu.Item key="Students"><Link activeStyle={{color: 'red'}} to="Students">Students</Link></Menu.Item>
                     <Menu.Item key="Todo"><Link activeStyle={{color: 'red'}} to="Todo">Todo</Link></Menu.Item>
                     <Menu.Item key="Table"><Link activeStyle={{color: 'red'}} to="Table">Table</Link></Menu.Item>
-                    <Menu.Item key="clound"><Link activeStyle={{color: 'red'}} to="clound/">Clound</Link></Menu.Item>
                   </MenuItemGroup>
                 </SubMenu>
               </Menu>
