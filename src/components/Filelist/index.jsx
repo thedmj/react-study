@@ -72,7 +72,6 @@ var Filelistitem = React.createClass({
 
     },
     rename: function (path, name) { //重命名函数
-        console.log(this.props.path);
         if (this.props.title !== name) {
             var This = this;
             var reg = new RegExp("^" + name + "$");
@@ -86,7 +85,6 @@ var Filelistitem = React.createClass({
             index = index === 0 ? "" : "(" + index + ")";
             name += index;
             rename(path, name, function (res) {
-                console.log(path);
                 This.setState({
                     title: name,
                     path: res.path,
@@ -351,7 +349,6 @@ var Filelist = React.createClass({
                         }
                     }
                     if(selectedItem.item !== item){
-                        console.log(selectedItem,item);
                         This.setState({
                             dir: newdir,
                             selectedItem: {
@@ -436,7 +433,6 @@ var Filelist = React.createClass({
             message.error("该文件没有移动！");
         } else {
             paste(oldpath, newpath, name, type, function (res) {
-                console.log(oldpath, newpath + "/" + name);
                 dir.push(res);
                 This.setState({
                     dir: dir,
