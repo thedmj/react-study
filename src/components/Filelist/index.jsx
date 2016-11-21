@@ -107,12 +107,12 @@ var Filelistitem = React.createClass({
     },
     componentWillReceiveProps: function (nextProps) { //更换选中项后取消激活rename 这里componentWillReceiveProps会遍历items
         var o ={
-            showRename:false,
+            // showRename:false,
             hasCut:false    
         };
-        if (this.props.selectedItem.name === "") {
-            o.showRename=false;
-        }
+        // if (this.props.selectedItem.name === "") {
+        //     o.showRename=false;
+        // }
         if(!!this.props.filelist.state.cutItem){
             if(this.props.filelist.state.cutItem.state.title === this.state.title){
                 o.hasCut = true;
@@ -202,7 +202,7 @@ var Filelist = React.createClass({
                 </ul>
                 <Loading show={this.state.loading} />
 
-                <Menu position={this.state.position} showMenu={this.state.showMenu} onrename={this.renameShow} selectedItemName={this.state.selectedItem.name} filelist={this} newfolder={this.newfolder} delete={this.delete} getCopyItem={this.getCopyItem} getCutItem={this.getCutItem} onpaste={this.onpaste} />
+                <Menu position={this.state.position} showMenu={this.state.showMenu} onrename={this.renameShow} selectedItemName={this.state.selectedItem.name} filelist={this} newfolder={this.newfolder} delete={this.delete} getCopyItem={this.getCopyItem} getCutItem={this.getCutItem} onpaste={this.onpaste} onupload={this.onupload}/>
             </div>
         )
     },
@@ -244,6 +244,7 @@ var Filelist = React.createClass({
     rightClick: function (e) { //右键弹出菜单 左键隐藏
 
         if (e.button === 2) {
+            
             if (!!this.state.selectedItem.item) {
                 this.state.selectedItem.item.setState({
                     showRename: false
@@ -279,7 +280,6 @@ var Filelist = React.createClass({
     },
     renameShow: function (e) { //激活重命名
         e.stopPropagation();
-
         this.setState({
             showMenu: false
         });
@@ -445,5 +445,8 @@ var Filelist = React.createClass({
             })
         }
     },
+    onupload:function(){
+        
+    }
 });
 module.exports = Filelist;
